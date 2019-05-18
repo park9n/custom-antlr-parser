@@ -1,6 +1,7 @@
 // Generated from /home/cspark/git/custom-antlr-parser/CPP14Parser.g4 by ANTLR 4.7.2
 
 import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
@@ -443,6 +444,12 @@ public class CPP14ParserBaseListener implements CPP14ParserListener {
 	 */
 	@Override public void enterShiftoperator(CPP14Parser.ShiftoperatorContext ctx) {
 		System.out.println(ctx.getText() + "\t| enterShiftoperator()");
+
+		int gt1Index = ((TerminalNode) ctx.getChild(0)).getSymbol().getStartIndex();
+		int gt2Index = ((TerminalNode) ctx.getChild(1)).getSymbol().getStartIndex();
+		if (gt2Index != gt1Index + 1) {
+			System.out.println("cheese.park: '> >' is recognized as '>>' operator");
+		}
 	}
 	/**
 	 * {@inheritDoc}
